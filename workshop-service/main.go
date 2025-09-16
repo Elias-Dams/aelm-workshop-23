@@ -7,6 +7,7 @@ import (
 )
 
 func defaultHandler(w http.ResponseWriter, r *http.Request) {
+	// test comment
 	greeting := map[string]string{
 		"message": "Welcome to the ALM Workshop!",
 	}
