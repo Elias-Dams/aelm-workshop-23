@@ -55,7 +55,7 @@ jobs:
         uses: docker/metadata-action@v4
         id: meta
         with:
-          images: ${{secrets.DOCKER_USERNAME}}/${{env.DOCKER_REPOSITORY}}/${{env.DOCKER_IMAGE}}
+          images: eliasdams/${{env.DOCKER_REPOSITORY}}/${{env.DOCKER_IMAGE}}
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
