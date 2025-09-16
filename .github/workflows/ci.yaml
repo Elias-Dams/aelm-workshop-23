@@ -8,7 +8,7 @@ on:
 
 # These variables can be reused in the build steps
 env:
-  DOCKER_TEST: eliasdams
+  DOCKER_USERNAME: eliasdams
   DOCKER_REPOSITORY: tourna
   DOCKER_IMAGE: aelm-workshop-23
   GOLANG_VERSION: 1.21.x
@@ -61,11 +61,11 @@ jobs:
         uses: docker/metadata-action@v4
         id: meta
         with:
-          images: ${{env.DOCKER_TEST}}/${{env.DOCKER_REPOSITORY}}/${{env.DOCKER_IMAGE}}
+          images: ${{env.DOCKER_USERNAME}}/${{env.DOCKER_REPOSITORY}}/${{env.DOCKER_IMAGE}}
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: $${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPOSITORY }}/${{ env.DOCKER_IMAGE }}:main
